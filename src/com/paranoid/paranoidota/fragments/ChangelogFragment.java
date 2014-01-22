@@ -34,7 +34,7 @@ import com.paranoid.paranoidota.R;
 public class ChangelogFragment extends Fragment {
 
     private static final String CHANGELOG_URL
-            = "https://plus.google.com/app/basic/107979589566958860409/posts";
+            = "https://github.com/RemixPA/ChangeLog/commits/kk4.4";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
