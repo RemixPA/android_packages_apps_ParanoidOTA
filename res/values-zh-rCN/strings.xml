@@ -133,8 +133,11 @@
     <string name="settings_checktime_summary">设置每次升级检查间隔时间</string>
     <string name="settings_checkgapps_title">检查GAPPS更新</string>
     <string name="settings_checkgapps_summary">检查PA专用GAPPS更新</string>
-    <string name="settings_checkgappsmini_title">使用更小的升级包</string>
-    <string name="settings_checkgappsmini_summary">使用小的升级包而不是完整包</string>
+    <string name="settings_gappstype_title">GAPPS类型</string>
+    <string name="settings_gappstype_summary">选择完整包，精简包以及原生GAPPS</string>
+    <string name="gapps_type_full">完整包</string>
+    <string name="gapps_type_mini">精简包</string>
+    <string name="gapps_type_stock">原生包</string>
     <string name="time_notifications_never">不检查</string>
     <string name="time_notifications_half_an_hour">0.5 小时</string>
     <string name="time_notifications_an_hour">1 小时</string>
