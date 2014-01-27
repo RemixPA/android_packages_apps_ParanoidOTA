@@ -59,6 +59,10 @@
     <string name="rom_new_version">找到新版本!</string>
     <string name="gapps_new_version">找到新版本的GAPPS!</string>
     <string name="rom_scanning">正在检查更新...</string>
+    <string name="current_rom_title">当前系统版本</string>
+    <string name="newer_rom_title">最新系统版本</string>
+    <string name="current_gapps_title">当前GAPPS版本</string>
+    <string name="newer_gapps_title">最新GAPPS版本</string>
     <string name="gapps_version">GAPPS %1$s</string>
     <string name="rom_outdated">你的ROM不是最新的版本!</string>
     <string name="update_rom_to_aospa">更新ROM!</string>
