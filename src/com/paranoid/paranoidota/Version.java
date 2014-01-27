@@ -45,7 +45,7 @@ import java.io.Serializable;
  */
 public class Version implements Serializable {
 
-    private final String[] STATIC_REMOVE = { ".zip", "pa_" };
+    private final String[] STATIC_REMOVE = { ".zip", "pa_", "OTA-" };
     private final String[] PHASES = { "ALPHA", "BETA", "RELEASE CANDIDATE", "GOLD" };
 
     private static final String SEPARATOR = "-";
@@ -62,11 +62,14 @@ public class Version implements Serializable {
     private int mPhase = GOLD;
     private int mPhaseNumber = 0;
     private int mDate = 0;
+    private boolean isOTA = false;
 
     public Version() {
     }
 
     public Version(String fileName) {
+        
+        isOTA = fileName.contains("OTA");
 
         for (int i = 0; i < STATIC_REMOVE.length; i++) {
             fileName = fileName.replace(STATIC_REMOVE[i], "");
@@ -76,22 +79,24 @@ public class Version implements Serializable {
 
         mDevice = split[0];
 
-        // remove gapps extra names (modular, full, mini, etc)
-        while (split[1].matches ("\\w+\\.?")) {
-            String[] newSplit = new String[split.length - 1];
-            newSplit[0] = split[0];
-            for (int i = 2; i < split.length; i++) {
-                newSplit[i - 1] = split[i];
+        if (!isOTA) {
+            // remove gapps extra names (modular, full, mini, etc)
+            while (split[1].matches ("\\w+\\.?")) {
+                String[] newSplit = new String[split.length - 1];
+                newSplit[0] = split[0];
+                for (int i = 2; i < split.length; i++) {
+                    newSplit[i - 1] = split[i];
+                }
+                split = newSplit;
+                if (split.length <= 1) {
+                    break;
+                }
             }
-            split = newSplit;
-            if (split.length <= 1) {
-                break;
-            }
-        }
 
-        if (split.length <= 1) {
-            // malformed version
-            return;
+            if (split.length <= 1) {
+                // malformed version
+                return;
+            }
         }
 
         String version = split[1];
@@ -136,9 +141,9 @@ public class Version implements Serializable {
             if (!version.isEmpty()) {
                 mPhaseNumber = Integer.parseInt(version);
             }
-            mDate = Integer.parseInt(split[3]);
+            mDate = Integer.parseInt(isOTA ? split[4] : split[3]);
         } else {
-            mDate = Integer.parseInt(split[2]);
+            mDate = Integer.parseInt(isOTA ? split[3] : split[2]);
         }
     }
 
@@ -188,8 +193,8 @@ public class Version implements Serializable {
                 + "."
                 + mMinor
                 + (mMaintenance > 0 ? (separateMaintenance ? "." : "")
-                        + mMaintenance : "")
-                + (mPhase != GOLD ? "-" + mPhase + mPhaseNumber : "") + "-" + mDate;
+                        + mMaintenance : "") + "-"
+                + PHASES[mPhase] + "-" + mDate;
     }
 
     public static Version fromGapps(String platform, long version) {
