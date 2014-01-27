@@ -193,8 +193,10 @@ public class Version implements Serializable {
                 + "."
                 + mMinor
                 + (mMaintenance > 0 ? (separateMaintenance ? "." : "")
-                        + mMaintenance : "") + "-"
-                + PHASES[mPhase] + "-" + mDate;
+                        + mMaintenance : "")
+                + (isOTA ? "-" + PHASES[mPhase] : 
+                        (mPhase != GOLD ? "-" + mPhase + mPhaseNumber : ""))
+                + "-" + mDate;
     }
 
     public static Version fromGapps(String platform, long version) {
