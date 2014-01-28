@@ -43,6 +43,7 @@ public class RemixServer implements Server {
 
     @Override
     public List<PackageInfo> createPackageInfoList(JSONObject response) throws Exception {
+        mError = null;
         List<PackageInfo> list = new ArrayList<PackageInfo>();
         mError = response.optString("error");
         if (mError == null || mError.isEmpty()) {
@@ -76,7 +77,15 @@ public class RemixServer implements Server {
 
     @Override
     public String getError() {
-        return mError;
+        // -1 for no update available
+        // -2 for this device is not found on server
+        if ("-1".equals(mError)) {
+            return mContext.getResources().getString(R.string.no_rom_updates);
+        } else if ("-2".equals(mError)) {
+            return mContext.getResources().getString(R.string.error_device_not_found_server);
+        } else {
+            return mError;
+        }
     }
 
 }
