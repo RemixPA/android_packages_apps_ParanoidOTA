@@ -194,8 +194,7 @@ public class Version implements Serializable {
                 + mMinor
                 + (mMaintenance > 0 ? (separateMaintenance ? "." : "")
                         + mMaintenance : "")
-                + (isOTA ? "-" + PHASES[mPhase] : 
-                        (mPhase != GOLD ? "-" + mPhase + mPhaseNumber : ""))
+                + (mPhase != GOLD ? "-" + PHASES[mPhase] + mPhaseNumber : "")
                 + "-" + mDate;
     }
 
