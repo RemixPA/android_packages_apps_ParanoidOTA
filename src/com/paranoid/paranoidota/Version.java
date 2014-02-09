@@ -61,12 +61,8 @@ public class Version implements Serializable {
     private int mMaintenance = 0;
     private int mPhase = GOLD;
     private int mPhaseNumber = 0;
-<<<<<<< HEAD
-    private int mDate = 0;
-    private boolean isOTA = false;
-=======
     private String mDate = "0";
->>>>>>> FETCH_HEAD
+    private boolean isOTA = false;
 
     public Version() {
     }
@@ -145,15 +141,9 @@ public class Version implements Serializable {
             if (!version.isEmpty()) {
                 mPhaseNumber = Integer.parseInt(version);
             }
-<<<<<<< HEAD
-            mDate = Integer.parseInt(isOTA ? split[4] : split[3]);
+            mDate = isOTA ? split[4] : split[3];
         } else {
-            mDate = Integer.parseInt(isOTA ? split[3] : split[2]);
-=======
-            mDate = split[3];
-        } else {
-            mDate = split[2];
->>>>>>> FETCH_HEAD
+            mDate = isOTA ? split[3] : split[2];
         }
     }
 

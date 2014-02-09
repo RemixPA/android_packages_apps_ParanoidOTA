@@ -53,7 +53,7 @@ import com.paranoid.paranoidota.widget.Card;
 
 public class MainActivity extends Activity implements UpdaterListener, DownloadCallback, OnNavigationListener {
 
-    private static final String CHANGELOG = "https://plus.google.com/app/basic/+ParanoidAndroidCorner/posts";
+    private static final String CHANGELOG = "https://github.com/RemixPA/ChangeLog/raw/kk4.4/Changelog.log";
     private static final String STATE = "STATE";
 
     public static final int STATE_UPDATES = 0;
