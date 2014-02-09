@@ -72,20 +72,21 @@ public class RemixServer implements Server {
             }
 
         });
+        Collections.reverse(list);
         return list;
     }
 
     @Override
     public String getError() {
-        // -1 for no update available
-        // -2 for this device is not found on server
+        /*
         if ("-1".equals(mError)) {
-            return mContext.getResources().getString(R.string.no_rom_updates);
+            return mContext.getResources().getString(R.string.no_updates_found);
         } else if ("-2".equals(mError)) {
             return mContext.getResources().getString(R.string.error_device_not_found_server);
         } else {
             return mError;
-        }
+        }*/
+        return mError;
     }
 
 }
