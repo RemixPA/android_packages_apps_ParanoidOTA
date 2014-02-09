@@ -85,8 +85,8 @@
     <string name="androidsecure">Android secure</string>
     <string name="sdext">SD-Ext</string>
     <string name="alert_reboot_install_title">安装更新</string>
-    <string name="alert_reboot_one_message">你的设备将会重启进入recovery并安装%1$s.</string>
-    <string name="alert_reboot_more_message">你的设备将会重启进入recovery并安装%1$s.</string>
+    <string name="alert_reboot_one_message">你的设备将会重启进入recovery并安装更新.</string>
+    <string name="alert_reboot_more_message">你的设备将会重启进入recovery并安装更新.</string>
     <string name="alert_reboot_now">立即安装</string>
 
     <!-- CHANGELOG -->
