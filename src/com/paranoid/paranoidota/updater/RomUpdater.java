@@ -24,15 +24,13 @@ import android.content.Context;
 import com.paranoid.paranoidota.R;
 import com.paranoid.paranoidota.Utils;
 import com.paranoid.paranoidota.Version;
-import com.paranoid.paranoidota.updater.server.GooServer;
 import com.paranoid.paranoidota.updater.server.LegacyServer;
-import com.paranoid.paranoidota.updater.server.PaServer;
 import com.paranoid.paranoidota.updater.server.RemixServer;
 
 public class RomUpdater extends Updater {
 
     public RomUpdater(Context context, boolean fromAlarm) {
-        super(context, new Server[] { new RemixServer(context, true) }, fromAlarm);
+        super(context, new Server[] { new RemixServer(context, true), new LegacyServer(context, true) }, fromAlarm);
     }
 
     @Override
