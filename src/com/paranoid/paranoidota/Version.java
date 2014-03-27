@@ -62,6 +62,7 @@ public class Version implements Serializable {
     private int mPhase = GOLD;
     private int mPhaseNumber = 0;
     private String mDate = "0";
+    private String mMatchDate = "0";
     private boolean isOTA = false;
 
     public Version() {
@@ -81,7 +82,7 @@ public class Version implements Serializable {
 
         if (!isOTA) {
             // remove gapps extra names (modular, full, mini, etc)
-            while (split[1].matches ("\\w+\\.?")) {
+            while (split[1].matches("\\w+\\.?")) {
                 String[] newSplit = new String[split.length - 1];
                 newSplit[0] = split[0];
                 for (int i = 2; i < split.length; i++) {
@@ -142,8 +143,10 @@ public class Version implements Serializable {
                 mPhaseNumber = Integer.parseInt(version);
             }
             mDate = isOTA ? split[4] : split[3];
+            mMatchDate = isOTA ? split[3] : "";
         } else {
             mDate = isOTA ? split[3] : split[2];
+            mMatchDate = isOTA ? split[2] : "";
         }
     }
 
@@ -177,6 +180,10 @@ public class Version implements Serializable {
 
     public String getDate() {
         return mDate;
+    }
+
+    public String getMatchDate() {
+        return mMatchDate;
     }
 
     public boolean isEmpty() {

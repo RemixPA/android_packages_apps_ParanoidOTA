@@ -53,6 +53,8 @@ public abstract class Updater implements Response.Listener<JSONObject>, Response
         public String getSize();
 
         public Version getVersion();
+        
+        public String getIntro();
 
         public boolean isDelta();
 

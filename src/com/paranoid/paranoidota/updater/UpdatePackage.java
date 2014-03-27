@@ -35,6 +35,7 @@ public class UpdatePackage implements PackageInfo, Serializable {
     private String mHost = null;
     private String mSize = null;
     private String mIncrementalPath = null;
+    private String mIntro = null;
     private Version mVersion;
     private boolean mIsDelta = false;
     private boolean mIsGapps = false;
@@ -42,17 +43,29 @@ public class UpdatePackage implements PackageInfo, Serializable {
     public UpdatePackage(String device, String name, Version version, long size, String url,
             String md5, boolean gapps) {
         this(device, name, version,
-                IOUtils.humanReadableByteCount(size, false), url, md5, gapps);
+                IOUtils.humanReadableByteCount(size, false), url, md5, null, gapps);
+    }
+
+    public UpdatePackage(String device, String name, Version version, long size, String url,
+            String md5, String intro, boolean gapps) {
+        this(device, name, version,
+                IOUtils.humanReadableByteCount(size, false), url, md5, intro, gapps);
     }
 
     public UpdatePackage(String device, String name, Version version, String size, String url,
             String md5, boolean gapps) {
+        this(device, name, version, size, url, md5, null, gapps);
+    }
+
+    public UpdatePackage(String device, String name, Version version, String size, String url,
+            String md5, String intro, boolean gapps) {
         this.mFilename = name;
         this.mVersion = version;
         this.mSize = size;
         this.mPath = url;
         this.mMd5 = md5;
         this.mIsGapps = gapps;
+        this.mIntro = intro;
         mHost = mPath.replace("http://", "");
         mHost = mHost.replace("https://", "");
         mHost = mHost.substring(0, mHost.indexOf("/"));
@@ -111,5 +124,10 @@ public class UpdatePackage implements PackageInfo, Serializable {
     @Override
     public boolean isGapps() {
         return mIsGapps;
+    }
+
+    @Override
+    public String getIntro() {
+        return mIntro;
     }
 }

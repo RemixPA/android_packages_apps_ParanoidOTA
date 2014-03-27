@@ -22,19 +22,19 @@
 
     <!-- GENERAL -->
     <string name="app_name">Paranoid OTA</string>
-    <string name="title_checking">Checking...</string>
+    <string name="title_checking">Checking&#8230;</string>
     <string name="check_for_updates">Check</string>
     <string name="no_additional_info">No additional information</string>
 
     <!-- SYSTEM ACTIVITY -->
     <string name="check_for_updates_long">Check for updates</string>
     <string name="all_up_to_date">You\'re up to date!</string>
-    <string name="rom_scanning">Checking for system updates...</string>
+    <string name="rom_scanning">Checking for system updates&#8230;</string>
     <string name="rom_gapps_new_version">System updates found!</string>
     <string name="rom_new_version">New ROM update found!</string>
     <string name="gapps_new_version">New Google apps update found!</string>
     <string name="no_updates">No system updates found</string>
-    <string name="system_update_found">A new system update was found and is ready to download.\nPlease check the notifications that may have appeared. They will lead you to ParanoidOTA from where you will be able to download and/or install the update.\n\nUpdate(s) found:\n%1$s</string>
+    <string name="system_update_found">A new system update was found and is ready to download.\nPlease check the notifications that may have appeared. They will lead you to ParanoidOTA from where you will be able to download and/or install the update.\n\n%1$s</string>
 
     <!-- SYSTEM -->
     <string name="system_title">System info</string>
@@ -45,7 +45,7 @@
 
     <!-- UPDATES -->
     <string name="updates">Updates</string>
-    <string name="updates_checking">Checking...</string>
+    <string name="updates_checking">Checking&#8230;</string>
     <string name="updates_error">Error</string>
     <string name="updates_found">System update found</string>
     <string name="updates_uptodate">You\'re up to date</string>
@@ -54,6 +54,10 @@
     <string name="check_gapps_updates_error">Error checking for Google apps updates</string>
     <string name="system_update">System update found.\nSelect the update(s) you want to download.\n\nUpdate(s) found:</string>
     <string name="download_and_install">Download and install</string>
+    <string name="update_match_version">Match version:%1$s</string>
+    <string name="update_new_version">New version:%1$s</string>
+    <string name="update_package_size">Size:$1$s</string>
+    <string name="update_introduce">Introduction:\n%1$s</string>
     <string name="update_host">Hosted at %1$s</string>
 
     <!-- INSTALL -->
@@ -62,7 +66,7 @@
     <string name="install_info">The following update(s) are ready to be installed.\n\nYou can add more zips by clicking on the \"Add file\" button.</string>
     <string name="add_file">Add file</string>
     <string name="install_now">Install now</string>
-    <string name="calculating_md5">Calculating MD5 sum...</string>
+    <string name="calculating_md5">Calculating MD5 sum&#8230;</string>
     <string name="md5_mismatch">MD5 mismatch</string>
     <string name="md5_mismatch_summary">Received:\n%1$s\n\nCalculated:\n%2$s</string>
     <string name="md5_install_anyway">Continue anyway</string>
@@ -141,12 +145,12 @@
     <string name="time_notifications_five_hours">5 hours</string>
     <string name="time_notifications_daily">Daily</string>
     <string name="settings_goo">Goo.im</string>
-    <string name="settings_login_goo">Log in goo.im</string>
+    <string name="settings_login_goo">Log in Goo.im</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
-    <string name="logged_out">Logged out from goo.im</string>
+    <string name="logged_out">Logged out from Goo.im</string>
     <string name="logged_in">Logged in as %1$s</string>
-    <string name="logging_in">Logging in goo.im...</string>
+    <string name="logging_in">Logging in Goo.im&#8230;</string>
     <string name="error_logging_invalid">Invalid username/password</string>
     <string name="error_logging_down">Unable to reach server</string>
     <string name="error_logging_in">Unknown error logging in</string>

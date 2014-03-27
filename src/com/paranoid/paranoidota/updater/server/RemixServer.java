@@ -1,6 +1,7 @@
 package com.paranoid.paranoidota.updater.server;
 
 import android.content.Context;
+import android.text.TextUtils;
 
 import com.paranoid.paranoidota.R;
 import com.paranoid.paranoidota.Version;
@@ -13,32 +14,32 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 
 public class RemixServer implements Server {
 
 
-    private static final String URL = "http://trip.tf-swufe.net/xilence/check?d=%s";
+    private static final String URL = "http://trip.tf-swufe.net/xilence/check/%s?lang=%s";
 
     private Context mContext;
     private String mDevice = null;
     private String mError = null;
     private Version mVersion;
-    private boolean mIsRom;
     
-    public RemixServer(Context context, boolean isRom) {
+    public RemixServer(Context context) {
         mContext = context;
-        mIsRom = isRom;
     }
     
     @Override
     public String getUrl(String device, Version version) {
         mDevice = device;
         mVersion = version;
-        return String.format(URL, new Object[] {device});
+        return String.format(URL, new Object[] {device, Locale.getDefault().getLanguage().toLowerCase()});
     }
 
     @Override
@@ -57,10 +58,14 @@ public class RemixServer implements Server {
                 if (!isNew) {
                     continue;
                 }
+                String intro = file.optString("intro");
+                if (!TextUtils.isEmpty(intro)) {
+                    intro = URLDecoder.decode(intro, "utf-8");
+                }
                 Version version = new Version(filename);
                 if (Version.compare(mVersion, version) < 0) {
                     list.add(new UpdatePackage(mDevice, filename, version, file.getString("size"),
-                            file.getString("url"), file.getString("md5"), true));
+                            file.getString("url"), file.getString("md5"), intro, true));
                 }
             }
         }
@@ -78,14 +83,6 @@ public class RemixServer implements Server {
 
     @Override
     public String getError() {
-        /*
-        if ("-1".equals(mError)) {
-            return mContext.getResources().getString(R.string.no_updates_found);
-        } else if ("-2".equals(mError)) {
-            return mContext.getResources().getString(R.string.error_device_not_found_server);
-        } else {
-            return mError;
-        }*/
         return mError;
     }
 

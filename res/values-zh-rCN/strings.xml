@@ -22,14 +22,14 @@
     
     <!-- GENERAL -->
     <string name="app_name">OTA 升级</string>
-    <string name="title_checking">正在检查...</string>
+    <string name="title_checking">正在检查&#8230;</string>
     <string name="check_for_updates">检查更新</string>
     <string name="no_additional_info">没有相关信息</string>
     
     <!-- SYSTEM ACTIVITY -->
     <string name="check_for_updates_long">检查更新</string>
     <string name="all_up_to_date">你已经是最新的版本了!</string>
-    <string name="rom_scanning">正在检查更新...</string>
+    <string name="rom_scanning">正在检查更新&#8230;</string>
     <string name="rom_gapps_new_version">有新的版本!</string>
     <string name="rom_new_version">ROM有新的版本!</string>
     <string name="gapps_new_version">GAPPS有新的版本!</string>
@@ -45,16 +45,20 @@
     
     <!-- UPDATES -->
     <string name="updates">升级</string>
-    <string name="updates_checking">正在检查...</string>
+    <string name="updates_checking">正在检查&#8230;</string>
     <string name="updates_error">错误</string>
     <string name="updates_found">系统有可用更新</string>
     <string name="updates_uptodate">@string/all_up_to_date</string>
     <string name="no_updates_found">未找到更新</string>
     <string name="check_rom_updates_error">检查ROM更新出错</string>
     <string name="check_gapps_updates_error">检查GAPPS更新出错</string>
-    <string name="system_update">系统有可用的更新\n请选择更新进行下载\n\n更新已找到:</string>
+    <string name="system_update">系统有可用的更新\n请选择更新进行下载\n</string>
     <string name="download_and_install">下载安装</string>
-    <string name="update_host">Hosted at %1$s</string>
+    <string name="update_match_version">适用版本:%1$s</string>
+    <string name="update_new_version">更新版本:%1$s</string>
+    <string name="update_package_size">大小:%1$s</string>
+    <string name="update_introduce">介绍:\n%1$s</string>
+    <string name="update_host">来自 %1$s 服务器</string>
 
     <!-- INSTALL -->
     <string name="install">安装</string>
@@ -62,7 +66,7 @@
     <string name="install_info">下列更新已经可以开始安装了\n\n你可以通过点击 \"添加文件\" 按钮添加更多的更新包</string>
     <string name="add_file">添加文件</string>
     <string name="install_now">开始安装</string>
-    <string name="calculating_md5">正在计算 MD5 值...</string>
+    <string name="calculating_md5">正在计算 MD5 值&#8230;</string>
     <string name="md5_mismatch">MD5 不匹配</string>
     <string name="md5_mismatch_summary">原始文件:\n%1$s\n\n当前:\n%2$s</string>
     <string name="md5_install_anyway">仍然继续</string>
@@ -103,8 +107,8 @@
     <string name="new_packages">%1$s 更新可下载</string>
     <string name="already_downloading_rom">你已经在下载一个ROM更新了</string>
     <string name="already_downloading_gapps">你已经在下载一个GAPPS更新了.</string>
-    <string name="cancel_download">Cancel download(s)</string>
-    <string name="downloading_info">Update(s) downloading:\n%1$s</string>
+    <string name="cancel_download">取消下载</string>
+    <string name="downloading_info">正在下载更新:\n%1$s</string>
 
     <!-- DOWNLOAD ERRORS -->
     <string name="error_cannot_resume">错误：下载无法继续</string>
@@ -138,5 +142,15 @@
     <string name="time_notifications_two_hours">2 小时</string>
     <string name="time_notifications_five_hours">5 小时</string>
     <string name="time_notifications_daily">每天</string>
+    <string name="settings_goo">Goo.im</string>
+    <string name="settings_login_goo">登陆到Goo.im</string>
+    <string name="username">用户名</string>
+    <string name="password">密码</string>
+    <string name="logged_out">已经从Goo.im注销</string>
+    <string name="logged_in">已经以 %1$s 的身份登陆</string>
+    <string name="logging_in">正在登陆到Goo.im&#8230;</string>
+    <string name="error_logging_invalid">用户名/密码无效</string>
+    <string name="error_logging_down">无法连接到服务器</string>
+    <string name="error_logging_in">未知错误</string>
 
 </resources>

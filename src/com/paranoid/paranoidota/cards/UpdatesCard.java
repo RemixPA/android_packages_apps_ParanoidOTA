@@ -25,6 +25,7 @@ import java.util.List;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
@@ -38,6 +39,7 @@ import android.widget.TextView;
 import com.paranoid.paranoidota.MainActivity;
 import com.paranoid.paranoidota.R;
 import com.paranoid.paranoidota.Utils;
+import com.paranoid.paranoidota.Version;
 import com.paranoid.paranoidota.updater.GappsUpdater;
 import com.paranoid.paranoidota.updater.RomUpdater;
 import com.paranoid.paranoidota.updater.Updater.PackageInfo;
@@ -50,6 +52,7 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
 
     private static final String ROMS = "ROMS";
     private static final String GAPPS = "GAPPS";
+    private static final int SEPARATOR_ID = 1;
 
     private RomUpdater mRomUpdater;
     private GappsUpdater mGappsUpdater;
@@ -143,7 +146,8 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
         mDownload.setEnabled(false);
 
         for (int i = mAdditional.getChildCount() - 1; i >= 0; i--) {
-            if (mAdditional.getChildAt(i) instanceof TextView) {
+            if (mAdditional.getChildAt(i) instanceof TextView
+                    || mAdditional.getChildAt(i).getId() == SEPARATOR_ID) {
                 mAdditional.removeViewAt(i);
             }
         }
@@ -174,6 +178,10 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
             Utils.setRobotoThin(context, mLayout);
         }
         String error = mErrorRom;
+        if (!TextUtils.isEmpty(error) && error.equals("-2")) { // syntax for
+                                                               // RemixPA
+            error = getResources().getString(R.string.error_device_not_found_server);
+        }
         if (mErrorGapps != null) {
             if (error != null) {
                 error += "\n" + mErrorGapps;
@@ -270,25 +278,64 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
             mLayout.addView(check);
             TextView text = new TextView(context);
             text.setText(packages[i].getFilename());
-            text.setTextSize(TypedValue.COMPLEX_UNIT_PX, res.getDimension(R.dimen.card_medium_text_size));
+            text.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                    res.getDimension(R.dimen.card_medium_text_size));
             text.setTextColor(R.color.card_text);
             text.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
                     LayoutParams.WRAP_CONTENT));
             mAdditional.addView(text);
             text = new TextView(context);
-            text.setText(packages[i].getSize());
-            text.setTextSize(TypedValue.COMPLEX_UNIT_PX, res.getDimension(R.dimen.card_small_text_size));
+            text.setText(res.getString(R.string.update_match_version,
+                    new Version(packages[i].getFilename()).getMatchDate()));
+            text.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                    res.getDimension(R.dimen.card_small_text_size));
+            text.setTextColor(R.color.card_text);
+            text.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
+                    LayoutParams.WRAP_CONTENT));
+            mAdditional.addView(text);
+            text = new TextView(context);
+            text.setText(res.getString(R.string.update_new_version,
+                    new Version(packages[i].getFilename()).getDate()));
+            text.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                    res.getDimension(R.dimen.card_small_text_size));
+            text.setTextColor(R.color.card_text);
+            text.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
+                    LayoutParams.WRAP_CONTENT));
+            mAdditional.addView(text);
+            text = new TextView(context);
+            text.setText(res.getString(R.string.update_package_size, packages[i].getSize()));
+            text.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                    res.getDimension(R.dimen.card_small_text_size));
+            text.setTextColor(R.color.card_text);
+            text.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
+                    LayoutParams.WRAP_CONTENT));
+            mAdditional.addView(text);
+            text = new TextView(context);
+            text.setText(res.getString(R.string.update_introduce, packages[i].getIntro()));
+            text.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                    res.getDimension(R.dimen.card_small_text_size));
             text.setTextColor(R.color.card_text);
             text.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
                     LayoutParams.WRAP_CONTENT));
             mAdditional.addView(text);
             text = new TextView(context);
             text.setText(res.getString(R.string.update_host, packages[i].getHost()));
-            text.setTextSize(TypedValue.COMPLEX_UNIT_PX, res.getDimension(R.dimen.card_small_text_size));
+            text.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                    res.getDimension(R.dimen.card_small_text_size));
             text.setTextColor(R.color.card_text);
             text.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
                     LayoutParams.WRAP_CONTENT));
             mAdditional.addView(text);
+            if (i+1 < packages.length) {
+                View separator = new View(context);
+                separator.setId(SEPARATOR_ID);
+                separator.setBackgroundColor(getResources().getColor(R.color.card_border));
+                separator.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
+                        LayoutParams.WRAP_CONTENT));
+                separator.setMinimumHeight(getResources().getDimensionPixelSize(
+                        R.dimen.card_separator_height));
+                mAdditional.addView(separator);
+            }
         }
     }
 
