@@ -147,7 +147,7 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
 
         for (int i = mAdditional.getChildCount() - 1; i >= 0; i--) {
             if (mAdditional.getChildAt(i) instanceof TextView
-                    || mAdditional.getChildAt(i).getId() == SEPARATOR_ID) {
+                        || mAdditional.getChildAt(i).getId() == SEPARATOR_ID) {
                 mAdditional.removeViewAt(i);
             }
         }
@@ -178,10 +178,10 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
             Utils.setRobotoThin(context, mLayout);
         }
         String error = mErrorRom;
-        if (!TextUtils.isEmpty(error) && error.equals("-2")) { // syntax for
-                                                               // RemixPA
+        if (!TextUtils.isEmpty(error) && error.equals("-2")) {
             error = getResources().getString(R.string.error_device_not_found_server);
         }
+
         if (mErrorGapps != null) {
             if (error != null) {
                 error += "\n" + mErrorGapps;
@@ -278,8 +278,7 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
             mLayout.addView(check);
             TextView text = new TextView(context);
             text.setText(packages[i].getFilename());
-            text.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                    res.getDimension(R.dimen.card_medium_text_size));
+            text.setTextSize(TypedValue.COMPLEX_UNIT_PX, res.getDimension(R.dimen.card_medium_text_size));
             text.setTextColor(R.color.card_text);
             text.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
                     LayoutParams.WRAP_CONTENT));
@@ -320,8 +319,7 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
             mAdditional.addView(text);
             text = new TextView(context);
             text.setText(res.getString(R.string.update_host, packages[i].getHost()));
-            text.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                    res.getDimension(R.dimen.card_small_text_size));
+            text.setTextSize(TypedValue.COMPLEX_UNIT_PX, res.getDimension(R.dimen.card_small_text_size));
             text.setTextColor(R.color.card_text);
             text.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,
                     LayoutParams.WRAP_CONTENT));
@@ -338,5 +336,5 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
             }
         }
     }
-
 }
+
