@@ -83,6 +83,11 @@ public class RemixServer implements Server {
 
     @Override
     public String getError() {
+        if(mError.equals("-1")) {
+            mError = mContext.getString(R.string.no_updates_found);
+        } else if (mError.equals("-2")) {
+            mError = mContext.getString(R.string.check_rom_updates_error);
+        }
         return mError;
     }
 
