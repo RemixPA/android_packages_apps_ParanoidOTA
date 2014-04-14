@@ -337,4 +337,3 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
         }
     }
 }
-
