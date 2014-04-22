@@ -178,9 +178,6 @@ public class UpdatesCard extends Card implements UpdaterListener, OnCheckedChang
             Utils.setRobotoThin(context, mLayout);
         }
         String error = mErrorRom;
-        if (!TextUtils.isEmpty(error) && error.equals("-2")) {
-            error = getResources().getString(R.string.error_device_not_found_server);
-        }
 
         if (mErrorGapps != null) {
             if (error != null) {
